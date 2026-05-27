@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — tube2skill</title>
+  <style>
+    :root {
+      --text: #1a1a2e;
+      --muted: #5b6472;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --code-bg: #f3f4f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+      background: #fff;
+    }
+    h1 { font-size: 28px; letter-spacing: -0.4px; margin: 0 0 4px; }
+    h2 { font-size: 18px; margin: 32px 0 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+    h2:first-of-type { border-top: none; }
+    p, li { font-size: 15px; }
+    .updated { color: var(--muted); font-size: 14px; margin: 0 0 8px; }
+    ul { padding-left: 22px; }
+    li { margin: 4px 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      background: var(--code-bg);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --text: #e8e8ea; --muted: #9aa3b2; --accent: #6ea8ff; --border: #2a2f3a; --code-bg: #1c2230; }
+      body { background: #0f131a; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy — tube2skill</h1>
+  <p class="updated">Last updated: May 2026</p>
+
+  <h2>What tube2skill does</h2>
+  <p>tube2skill is a Chrome extension that turns a YouTube video into a reusable Claude skill. When you click "Generate skill", it reads the active video's transcript in your browser and sends it, with basic video metadata, to the tube2skill backend. The backend generates a <code>.skill</code> file and returns it to you for download.</p>
+
+  <h2>Signing in</h2>
+  <p>tube2skill uses <strong>Google sign-in</strong> (via Chrome's <code>identity</code> API) to create your account. When you sign in we receive, from Google, your email address and basic profile information (name, profile picture). This is used solely to identify your account, associate your generated skills with you, and enforce usage limits. We do not post anything to your Google account or access your Google data beyond this basic profile.</p>
+
+  <h2>Data we send to our backend</h2>
+  <p>When you generate a skill, the extension sends to the tube2skill backend (Firebase / Google Cloud):</p>
+  <ul>
+    <li>The video's <strong>transcript text</strong></li>
+    <li>Video <strong>metadata</strong>: video ID, title, channel name, and duration</li>
+    <li>An optional <strong>focus note</strong> you type</li>
+    <li>Your Firebase authentication token (to identify your account)</li>
+  </ul>
+  <p>The backend uses the Anthropic API (Claude) to generate the skill, stores the resulting <code>.skill</code> file and your usage counts associated with your account, and returns a short-lived download link. The Anthropic API key lives only on the backend and is never shipped in the extension.</p>
+
+  <h2>Data stored on your device</h2>
+  <ul>
+    <li>Your sign-in session token and basic profile, cached in Chrome's <code>storage.local</code>.</li>
+  </ul>
+
+  <h2>Data we do NOT collect</h2>
+  <ul>
+    <li>We do not collect or store your browsing history.</li>
+    <li>We do not track which videos you watch outside of the ones you explicitly generate skills from.</li>
+    <li>We do not sell or share your data with third parties for advertising.</li>
+  </ul>
+
+  <h2>Third-party services</h2>
+  <ul>
+    <li><strong>Google / Firebase</strong> — authentication, backend hosting, and storage of your generated skills. Governed by Google's privacy policy.</li>
+    <li><strong>Anthropic API</strong> — the transcript and metadata are processed by Claude to generate the skill. Governed by Anthropic's <a href="https://www.anthropic.com/legal/privacy">privacy policy</a>. API inputs are not used to train Anthropic's models by default.</li>
+    <li><strong>ExtensionPay</strong> — handles subscriptions and payments. Payment details are processed by ExtensionPay/Stripe; tube2skill never sees your card information.</li>
+  </ul>
+
+  <h2>Permissions used</h2>
+  <ul>
+    <li><code>identity</code> — to sign you in with your Google account.</li>
+    <li><code>activeTab</code> — to read the active YouTube video's URL and extract its transcript when you click the icon.</li>
+    <li><code>scripting</code> — to inject the transcript extractor into the YouTube tab on demand.</li>
+    <li><code>storage</code> — to cache your sign-in session.</li>
+    <li><strong>Host permissions</strong> — YouTube (read the transcript), Google Identity/Secure Token (sign-in), Cloud Functions (generate), Cloud Storage (download your <code>.skill</code>), and ExtensionPay (billing).</li>
+  </ul>
+
+  <h2>Data deletion</h2>
+  <p>You can delete a generated skill from within the product, and you can sign out at any time from the extension's Settings page. To request full deletion of your account data, email the address below.</p>
+
+  <h2>Contact</h2>
+  <p>Questions? Email: <a href="mailto:mstan1990@gmail.com">mstan1990@gmail.com</a></p>
+</body>
+</html>
